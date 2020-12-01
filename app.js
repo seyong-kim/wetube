@@ -25,8 +25,8 @@ app.use(localsMiddleware);
 
 //Router
 app.use(router.home, globalRouter);
-app.use(router.videos, videoRouter);
 app.use(router.users, userRouter);
+app.use(router.videos, videoRouter);
 
 //export
 export default app;

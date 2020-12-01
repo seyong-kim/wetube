@@ -3,8 +3,8 @@ WeTube
 ## Pages : 
 
 - [ ] Home
-- [ ] join
-- [ ] login
+- [X] join
+- [X] login
 - [X] Search
 - [ ] User Detail
 - [ ] Edit Profile

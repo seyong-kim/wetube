@@ -5,11 +5,8 @@ export const home   = (req, res) =>
 export const search = (req, res) => {
     console.log(req.query.term); // http://localhost:4040/search?term=term&test=lalalala => { term: 'term', test: 'lalalala' }  
     const {query : { term : searchingBy }} = req; // const searchingBy = req.query.term; => ES6 이전의 방식 / Query를 사용하려면 form의 method가 get이어야함. ( URL에 정보를 추가해줌 )
-    res.render("Search", { pageTitle : "Search", searchingBy : searchingBy } ); 
+    res.render("search", { pageTitle : "Search", searchingBy : searchingBy } ); 
 };
-    
-export const videos = (req,res) => 
-    res.render("videos", { pageTitle : "Video" } ); 
 
 export const upload = (req,res) => 
     res.render("upload", { pageTitle : "Upload" } );
