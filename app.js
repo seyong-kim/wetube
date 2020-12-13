@@ -16,7 +16,7 @@ app.use(helmet());
 //Set View Engine.
 app.set("view engine", "pug"); // set view engine
 app.use(cookie());
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // 없으면 req.body같은거 undefined라고 나옴.
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(morgan("dev"));
 

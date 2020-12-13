@@ -8,7 +8,15 @@ header.header
 
     .header_column
         ul
-            li
-                a(href=router.join) Join
-            li
-                a(href=router.login) Log In
+            if !user.isAuthenticated
+                li
+                    a(href=router.join) Join
+                li
+                    a(href=router.login) Log In
+            else
+                li
+                    a(href=`${router.videos}${router.upload}`) Upload
+                li
+                    a(href=router.userDetail(user.id)) Profile
+                li
+                    a(href=router.logout) Log Out

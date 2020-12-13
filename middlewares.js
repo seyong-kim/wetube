@@ -2,6 +2,13 @@ import router from "./router";
 
 export const localsMiddleware = (req,res,next) => { // local MiddleWare안에 선언한 전역 변수는 템플릿, View에 변수명처럼 존재하게 된다.
     res.locals.siteName = "WeTube";
-    res.locals.router = router;
+
+    res.locals.router = router; //View에서 사용하기 위함.
+
+    res.locals.user = {
+        isAuthenticated : true,
+        id : 1
+    }
+    
     next();
 }
