@@ -7,7 +7,7 @@ import router from "./router";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
-import { localsMiddleware } from "./middleWares";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
 
