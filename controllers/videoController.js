@@ -1,9 +1,19 @@
-import {videos} from "../db";
+import Video from "../models/Video";
 import router from "../router";
 
 //res.send => res.render // 첫번째는 Template 두번째는 전달할 객체.
-export const home = (req, res) => {
-    res.render("home", { pageTitle : "Home", videos } ); 
+export const home = async (req, res) => { //JS의 동기화
+	// const videos = await Video.find({}); //await는 async와 함께 있어야만 사용할 수 있다. --> 동기화
+	
+	//try catch 없이 error가 발생한다면 문제가 발생한다.
+	try{
+		const videos = await Video.find({});
+    	res.render("home", { pageTitle : "Home", videos } ); 
+	}catch(error){
+		console.log(error);
+		res.render("home", { pageTitle : "Home", videos : [] } ); 
+	}
+	
 }
      
 export const search = (req, res) => {
@@ -17,13 +27,22 @@ export const getUpload = (req,res) => {
     res.render("upload", { pageTitle : "Upload" } );
 }
 
-export const postUpload = (req,res) => { 
+export const postUpload = async (req,res) => { 
     const {
-        body : { file, title, description } 
-    } = req;
-    //To do : video upload and save video
-
-    res.redirect(router.videoDetail(324393));
+		body : { title, description },
+		file : { path }
+	} = req;
+    
+	const newVideo = await Video.create({
+		fileUrl : path,
+		title,
+		description
+	});
+	
+	console.log(newVideo);
+	//To do : video upload and save video
+	
+    res.redirect(router.videoDetail(newVideo.id));
 }
 
 export const videoDetail = (req,res) => 

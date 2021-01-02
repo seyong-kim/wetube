@@ -6,13 +6,18 @@ export const getJoin = (req, res) => {
 
 export const postJoin = (req,res) => {
     console.log(req.body);
-
-    const {
-        body : {name, email, password, password2}
-    } = req;
+	
+	const name = req.body.name;
+	const email = req.body.email;
+	const password = req.body.password;
+    const password2 = req.body.password2;
+	
+    // const {
+    //     body : {name, email, password, password2}
+    // } = req;
 
     if(password !== password2) {
-        res.status(400); // 400은 bad request를 의미함.
+        res.status(400);
         res.render("join");
     } else {
         //To do : Register User
@@ -22,7 +27,7 @@ export const postJoin = (req,res) => {
 
     // status code - > 400 / 500 / 404
 
-    res.render("join");
+    // res.render("join");
 }
 
 export const getLogin = (req, res) => {
@@ -44,7 +49,7 @@ export const userDetail = (req, res) => {
     res.render("userDetail");
 }
 
-export const editProfile    = (req, res) => {
+export const editProfile = (req, res) => {
     res.render("editProfile", {pageTitle : "editProfile", potato : "1234"} );
 }
 
